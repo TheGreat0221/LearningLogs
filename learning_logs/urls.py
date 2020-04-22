@@ -21,6 +21,6 @@ urlpatterns = [
     path('topics',views.topics, name='topics'), ## topics page
     # the integer value is stored in the variable topic_id and will
     # be subsequently passed to the topic function in views.py
-    path('topics/<int:topic_id?/',views.topic,name='topic'),
-
+    path('topics/<int:topic_id>/',views.topic,name='topic'),
+    ##path('new_topic/', views.new_topic, name='new_topic')
     ]

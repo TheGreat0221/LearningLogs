@@ -1,7 +1,24 @@
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
-    <p>
-    Topics page....don't have stuff yet
-    </p>
+    
+    <p>Topics</p>
+
+    <!-- In standard HTML, a bulleted list is called an unordered list
+        and is indicated by the tags <ul></ul. -->
+    <ul>
+        <!-- for loop to loop through each topic
+            NOTE: not like python, needs an endfor -->
+        {% for topic in topics %}
+
+        <!-- To print a variable in a template, wrap the 
+            variable name in double braces. -->
+            <li>
+                <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+            </li> <!-- li - list item -->
+            {% empty %} <!-- if the list is empty then display message-->
+            <li>No topics have been added yet.</li>
+            {% endfor %}
+    </ul>
+
 {% endblock content %}
