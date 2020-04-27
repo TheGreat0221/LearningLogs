@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html %"}
+
+    {% block content %}
+        <p>Add a new topic:</p>
+
+        <!-- define an HTML form. The action argument tells the browser where
+            to send the data submitted in the form-->
+        <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+            <!--Django uses the template tag {% csrf_token %} to prevent attackers
+                from using the form to gain unauthroized access to the server-->
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button name="submit">Add topic</button>
+        </form>
+    {% endblock content %}

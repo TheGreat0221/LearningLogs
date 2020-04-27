@@ -4,7 +4,7 @@ from django.urls import path
 
 #the dot tells Python to import the views.py module from
 # the same directory as the current urls.py module.
-from . import views
+from .import views
 
 #The variable app_name helps Django distinguish this urls.py file from
 # files of the same name in other apps within the project
@@ -22,5 +22,6 @@ urlpatterns = [
     # the integer value is stored in the variable topic_id and will
     # be subsequently passed to the topic function in views.py
     path('topics/<int:topic_id>/',views.topic,name='topic'),
-    ##path('new_topic/', views.new_topic, name='new_topic')
+    path('new_topic/', views.new_topic, name='new_topic'),
+    path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),
     ]
