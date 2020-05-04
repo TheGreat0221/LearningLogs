@@ -78,9 +78,13 @@ def new_entry(request,topic_id):
             new_entry = form.save(commit=False)
             # assign the topic of the new entry based on the topic we pulled from topic_id
             new_entry.topic = topic
-            new_entry.save()
-            form.save()
-            return redirect('learning_logs:topic',topic_id=topic_id)
+            if topic.owner == request.user:
+                new_entry.save()
+                form.save()
+                return redirect('learning_logs:topic',topic_id=topic_id)
+            else:
+                print("Unauthorized Access")
+                raise Http404
 
     context = {'form': form, 'topic': topic}
     return render(request, 'learning_logs/new_entry.html', context)      
