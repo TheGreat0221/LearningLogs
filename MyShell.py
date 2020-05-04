@@ -24,3 +24,9 @@ entries = t.entry_set.all()
 
 for entry in entries:
     print(entry)
+
+
+from django.contrib.auth.models import User
+
+for user in User.objects.all():
+    print(user.username, user.id)
